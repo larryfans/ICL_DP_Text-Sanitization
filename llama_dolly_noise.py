@@ -228,7 +228,7 @@ def generate_noised_sentence_s2(df, args, type, tokenizer, model):
 def DP_get_topk_similarities_condidates_probabilities(final_embeddings, word_embeddings_layer, vocab_ids, batch_size = 10000):
     final_norm = final_embeddings / final_embeddings.norm(dim=1, keepdim=True)
     num_batches = (len(vocab_ids) + batch_size - 1) // batch_size
-    # 初始化相似度矩阵
+    # 
     similarities = []
     for i in range(num_batches):
         start_idx = i * batch_size

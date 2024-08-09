@@ -6,8 +6,9 @@ This repo contains source code for "In-Context Learning with Differentially Priv
 
 # How to run our code
 
-'''
+```shell
 bash run.sh
-'''
+```
+
 
 

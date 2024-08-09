@@ -1,20 +1,4 @@
 # import evaluate
-# import pandas as pd
-# rouge = evaluate.load('rouge')
-
-# df_raw = pd.read_csv('/root/fjl/research_works/dp_llm_work/work_first_half_2024/sst2_dataset/train.tsv')
-# df_noised = pd.read_csv("/root/fjl/research_works/dp_llm_work/CusText/CusText/sst2/privatized_dataset/glove.42B.300d/conservative/eps_1.0_top_10_s1_save_stop_words_True/train.tsv", sep='\t')
-
-# raw_data = df_raw['sentence'].tolist()[:100]
-# noised_data = df_noised['sentence'].tolist()[:100]
-
-# results = rouge.compute(predictions=noised_data, references=raw_data)
-# print(results)
-
-
-
-# 
-# import evaluate
 import pandas as pd
 import json
 import models
@@ -27,7 +11,7 @@ import os
 
 def get_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--version_folder", type=str, default='/root/fjl/research_works/dp_llm_work/CusText/CusText/dolly/privatized_dataset/glove.42B.300d/conservative/')
+    parser.add_argument("--version_folder", type=str, default='./privatized_dataset/glove.42B.300d/conservative/')
     parser.add_argument("--version", type=str, default='eps_1.0_top_20_s1_save_stop_words_True')
     parser.add_argument("--is_map", type=bool, default=False, required=False)
     parser.add_argument("--shot",type=str,choices=['0', '2'])
@@ -64,15 +48,12 @@ def create_prompt(prompt,model_name):
     return full_prompt
 
 def replace_words(text, word_map):
-    # 定义替换函数
     def replace(match):
         word = match.group(0)
         return word_map.get(word, word)
     
-    # 创建正则表达式模式
     pattern = re.compile(r'\b(' + '|'.join(re.escape(key) for key in word_map.keys()) + r')\b')
     
-    # 进行替换
     return pattern.sub(replace, text)
 
 

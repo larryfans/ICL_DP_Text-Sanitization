@@ -1,4 +1,4 @@
-fastapi
+fastchat
 tqdm
 openai
 nltk

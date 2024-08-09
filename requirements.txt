@@ -1,0 +1,10 @@
+fastapi
+tqdm
+openai
+nltk
+numpy
+transformers
+torch 
+torchvision 
+torchaudio
+argparse

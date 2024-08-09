@@ -14,6 +14,11 @@ openai.base_url = "/base_url/"
 ```shell
 pip install -r requirements.txt
 ```
+
+The first time of using stopwords from the NLTK package, you need to execute the following code in python
+```
+nltk.download('stopwords')
+```
 # How to run our code
 
 ```shell
